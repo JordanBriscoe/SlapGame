@@ -39,14 +39,13 @@ function attack(type) {
    update()
 }
 function giveItem(item){
-   if()
    character.items.push(items[item])
 }
 
 function update() {
    healthElem.innerText = character.health.toString()
    attackElem.innerText = character.hits.toString()
-   
+   if(character.health <=0) reset()
 }
  update()
 
@@ -57,5 +56,12 @@ function addMods() {
       let item = character.items[i]
       modTotal += item.modifier
    }
+   character.items = []
    return modTotal
 }
+
+function reset() {
+      character.health = 100
+      character.hits = 0
+      update()
+   }
